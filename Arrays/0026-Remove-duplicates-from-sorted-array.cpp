@@ -7,7 +7,9 @@ using namespace std;
 Consider the number of unique elements in nums to be k​​​​​​​​​​​​​​. After removing duplicates, return the number of unique elements k.
 The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
 **/
-
+// Complexity Analysis
+// Time complexity : O(n^2) where n is the number of elements in the array
+// Space complexity : O(n) where n is the number of elements in the array
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
@@ -36,5 +38,29 @@ public:
         
         nums = non_duplicates;
         return no_of_non_duplicates++;
+    }
+};
+
+// Optimized Approach:
+// Complexity Analysis
+// Time complexity : O(n) where n is the number of elements in the array
+// Space complexity : O(1) where n is the number of elements in the array
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if (nums.empty()) {
+            return 0;
+        }
+
+        int writer = 0;
+
+        for (int reader = 1; reader < nums.size(); reader++) {
+            if (nums[reader] != nums[writer]) {
+                writer++;
+                nums[writer] = nums[reader];
+            }
+        }
+
+        return writer + 1;
     }
 };
