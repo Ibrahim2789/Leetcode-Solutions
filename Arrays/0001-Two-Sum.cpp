@@ -16,3 +16,27 @@ public:
         return {};
     }
 };
+
+//If given array is sorted then we can use two pointer approach to solve the problem in O(n) time complexity and O(1) space complexity.
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int left = 0;
+        int right = nums.size()-1;
+
+        while (left < right){
+            int sum = nums[left] + nums[right];
+
+            if ( sum > target){
+                right--;
+            }
+            else if ( sum < target ){
+                left++;
+            }
+            else{
+                return {left,right};
+            }
+        }
+        return {};
+    }
+};
