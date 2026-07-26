@@ -10,21 +10,22 @@ using namespace std;
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
-        double current = 0;
 
-        for ( int i = 0 ; i < k ; i++ ){
+        int current = 0;
+
+        for (int i = 0; i < k; i++)
             current += nums[i];
-        }
-        double max_average = current/k;
 
-        for ( size_t i = 1 ; i < nums.size()-k+1 ; i++ ){
-            current = current - nums[i-1] + nums[i+k-1];
-            current /= k;
+        int maximum = current;
 
-            if ( current > max_average ){
-                max_average = current;
-            }
+        for (int i = k; i < nums.size(); i++) {
+
+            current += nums[i];
+            current -= nums[i - k];
+
+            maximum = max(maximum, current);
         }
-        return max_average;
+
+        return (double)maximum / k;
     }
 };
