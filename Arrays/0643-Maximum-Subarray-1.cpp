@@ -4,6 +4,35 @@
 using namespace std;
 
 // Given an integer array nums consisting of n elements, find the contiguous subarray of given length k that has the maximum average value and return this value. Any answer with a calculation error less than 10-5 will be accepted.
+
+// Complexity Analysis
+// Time complexity : O(n) where n is the number of elements in the array
+// Space complexity : O(n) where n is the number of elements in the array
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+
+        int n = nums.size();
+
+        vector<int> prefix(n + 1, 0);
+
+        for (int i = 0; i < n; i++) {
+            prefix[i + 1] = prefix[i] + nums[i];
+        }
+
+        int maxSum = INT_MIN;
+
+        for (int i = 0; i <= n - k; i++) {
+
+            int currentSum = prefix[i + k] - prefix[i];
+
+            maxSum = max(maxSum, currentSum);
+        }
+
+        return (double)maxSum / k;
+    }
+};
+
 // Complexity Analysis
 // Time complexity : O(n) where n is the number of elements in the array
 // Space complexity : O(1) where n is the number of elements in the array
@@ -29,3 +58,4 @@ public:
         return (double)maximum / k;
     }
 };
+
