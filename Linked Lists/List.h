@@ -5,6 +5,11 @@ class List {
     public:
         const T & operator[](unsigned index);
         void insertAtFront(const T & data);
+        void insertAtBack(const T & data);
+        void removeAtFront();
+        void removeAtBack();
+        void printList(); 
+        ListNode* search(const T & data);
 
     private:
         class ListNode{
