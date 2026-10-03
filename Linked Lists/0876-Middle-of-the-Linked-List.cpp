@@ -8,6 +8,8 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+/* Time Complexity: O(n), Space Complexity: O(1) */
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
@@ -18,7 +20,7 @@ public:
         }
 
         ListNode* cur = head;
-        int count = 1;
+        int count = 0;
     
         while(cur != nullptr){
             cur = cur->next;
